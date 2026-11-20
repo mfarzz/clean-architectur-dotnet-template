@@ -1,0 +1,31 @@
+name: Publish NuGet Package
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore MyCleanApi.slnx
+
+      - name: Run Tests
+        run: dotnet test MyCleanApi.slnx --no-restore --verbosity normal
+
+      - name: Pack Template
+        run: dotnet pack packaging/Mfarzz.CleanArchitecture.Template.csproj -c Release -o ./dist
+
+      - name: Push to NuGet.org
+        run: dotnet nuget push ./dist/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

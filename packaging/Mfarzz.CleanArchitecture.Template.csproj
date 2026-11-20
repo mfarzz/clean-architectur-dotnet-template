@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageId>Mfarzz.CleanArchitecture.Template</PackageId>
+    <Title>.NET Clean Architecture Web API Template</Title>
+    <Version>1.0.0</Version>
+    <Authors>Muhammad Fariz</Authors>
+    <Company>Muhammad Fariz</Company>
+    <Description>Modern .NET 10 Clean Architecture Monolith Web API Starter Template with CQRS (MediatR), Multi-Database support (PostgreSQL, SQL Server), Dual API Style (Controllers, Minimal APIs), Result Pattern, and RFC 7807 ProblemDetails.</Description>
+    <PackageTags>dotnet-new;templates;clean-architecture;webapi;mediatr;cqrs;postgresql;sqlserver</PackageTags>
+    <PackageProjectUrl>https://github.com/mfarzz/clean-architectur-dotnet-template</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mfarzz/clean-architectur-dotnet-template</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+    <TargetFramework>net10.0</TargetFramework>
+
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\**\*" 
+             Exclude="..\packaging\**;..\dist\**;..\**\bin\**;..\**\obj\**;..\**\.vs\**;..\**\.vscode\**;..\**\.git\**;..\**\.dotnet\**;..\**\.nuget\**;..\**\*.user;..\**\*.log;..\**\logs\**;..\**\*.nupkg" 
+             PackagePath="content/%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

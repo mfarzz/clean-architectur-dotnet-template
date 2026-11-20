@@ -1,6 +1,8 @@
 # .NET Build artifacts
 bin/
 obj/
+dist/
+*.nupkg
 *.local
 
 # Visual Studio / VS Code / Rider
