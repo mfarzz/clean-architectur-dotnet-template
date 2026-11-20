@@ -50,6 +50,10 @@
       "modifiers": [
         {
           "exclude": [
+            "PROJECT_PLAN.md",
+            "packaging/**",
+            "dist/**",
+            "**/.github/**",
             "**/bin/**",
             "**/obj/**",
             "**/.vs/**",
