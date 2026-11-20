@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Muhammad Fariz",
+  "classifications": [ "Web", "WebAPI", "Clean Architecture", "Template" ],
+  "name": ".NET Clean Architecture Web API Template",
+  "identity": "MyCleanApi.CleanArchitecture.Template",
+  "shortName": "cleanapi",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MyCleanApi",
+  "preferNameDirectory": true,
+  "symbols": {
+    "Database": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "postgres",
+          "description": "PostgreSQL with Npgsql EF Core provider"
+        },
+        {
+          "choice": "sqlserver",
+          "description": "Microsoft SQL Server EF Core provider"
+        }
+      ],
+      "defaultValue": "postgres",
+      "description": "Select the database provider (postgres | sqlserver)"
+    },
+    "ApiStyle": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "controllers",
+          "description": "Classic ASP.NET Core API Controllers"
+        },
+        {
+          "choice": "minimal",
+          "description": "Modern Modular ASP.NET Core Minimal APIs"
+        }
+      ],
+      "defaultValue": "controllers",
+      "description": "Select the API style (controllers | minimal)"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/.vs/**",
+            "**/.vscode/**",
+            "**/.git/**",
+            "**/.dotnet/**",
+            "**/.nuget/**",
+            "**/logs/**",
+            "**/*.log",
+            "**/*.user"
+          ]
+        }
+      ]
+    }
+  ]
+}

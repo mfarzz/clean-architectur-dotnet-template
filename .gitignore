@@ -1,0 +1,35 @@
+# .NET Build artifacts
+bin/
+obj/
+*.local
+
+# Visual Studio / VS Code / Rider
+.vs/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Local Environment and Secrets
+appsettings.*.local.json
+.env
+.env.*
+!.env.example
+
+# Sandbox & Dotnet CLI local cache
+.dotnet/
+.nuget/
+
+# Logs
+logs/
+*.log
+
+# Test Results
+TestResults/
+coverage.*
