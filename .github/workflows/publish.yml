@@ -27,8 +27,27 @@ jobs:
       - name: Run Tests
         run: dotnet test MyCleanApi.slnx --no-restore --verbosity normal
 
+      - name: Determine Package Version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            RAW_TAG="${{ github.ref_name }}"
+            CLEAN_VERSION="${RAW_TAG#v}"
+            echo "pkg_version=${CLEAN_VERSION}" >> $GITHUB_OUTPUT
+            echo "Using release tag version: ${CLEAN_VERSION}"
+          else
+            echo "pkg_version=" >> $GITHUB_OUTPUT
+            echo "Using csproj defined version"
+          fi
+
       - name: Pack Template
-        run: dotnet pack packaging/Mfarzz.CleanArchitecture.Template.csproj -c Release -o ./dist
+        run: |
+          if [ -n "${{ steps.version.outputs.pkg_version }}" ]; then
+            dotnet pack packaging/Mfarzz.CleanArchitecture.Template.csproj -c Release -o ./dist -p:PackageVersion=${{ steps.version.outputs.pkg_version }}
+          else
+            dotnet pack packaging/Mfarzz.CleanArchitecture.Template.csproj -c Release -o ./dist
+          fi
 
       - name: NuGet login (OIDC Trusted Publishing)
         uses: NuGet/login@v1
