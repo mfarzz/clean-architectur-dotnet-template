@@ -4,7 +4,7 @@
     <PackageType>Template</PackageType>
     <PackageId>Mfarzz.CleanArchitecture.Template</PackageId>
     <Title>.NET Clean Architecture Web API Template</Title>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Muhammad Fariz</Authors>
     <Company>Muhammad Fariz</Company>
     <Description>Modern .NET 10 Clean Architecture Monolith Web API Starter Template with CQRS (MediatR), Multi-Database support (PostgreSQL, SQL Server), Dual API Style (Controllers, Minimal APIs), Result Pattern, and RFC 7807 ProblemDetails.</Description>

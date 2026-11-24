@@ -40,7 +40,7 @@ Solusi ini diorganisasikan ke dalam 4 layer utama sesuai prinsip *Clean Architec
 - **Validation Pipeline**: FluentValidation terintegrasi otomatis melalui MediatR `IPipelineBehavior`.
 - **Global Error Handling**: Standardisasi respon error menggunakan RFC 7807 (`ProblemDetails`) via `IExceptionHandler`.
 - **Structured Logging**: Serilog dikonfigurasi ke Console dan File harian berputar (*rolling file*).
-- **API Documentation**: Scalar UI & Microsoft OpenAPI modern.
+- **API Documentation**: Swagger UI, Scalar UI & Microsoft OpenAPI modern.
 - **Multi-Database Support**: Beralih antara PostgreSQL dan SQL Server cukup dengan mengganti `"DatabaseProvider"` di `appsettings.json`.
 - **Dual API Style Support**: Dilengkapi contoh **Controllers** (`SampleItemsController`) dan **Minimal APIs** (`SampleItemEndpoints`).
 - **Automated Auditing**: EF Core `AuditableEntityInterceptor` otomatis mengisi `CreatedAt`, `CreatedBy`, `UpdatedAt`, dan `UpdatedBy`.
@@ -96,9 +96,13 @@ docker compose up -d
 dotnet run --project src/MyCleanApi.WebApi
 ```
 
-Buka browser dan akses dokumentasi API interaktif Scalar di:
-- **Scalar UI**: `https://localhost:7123/scalar/v1` (atau port HTTP lokal Anda)
-- **Health Checks**: `https://localhost:7123/health`
+Buka browser dan akses dokumentasi API (aktif hanya pada environment `Development`):
+- **Swagger UI**: `http://localhost:5264/swagger`
+- **Scalar UI**: `http://localhost:5264/scalar/v1`
+- **OpenAPI JSON**: `http://localhost:5264/openapi/v1.json`
+- **Health Checks**: `http://localhost:5264/health`
+
+Swagger UI dan Scalar menggunakan dokumen OpenAPI yang sama. Jika memakai profil `https`, gunakan `https://localhost:7255`.
 
 ---
 

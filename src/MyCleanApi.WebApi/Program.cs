@@ -32,6 +32,12 @@ app.UseExceptionHandler();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("../openapi/v1.json", "MyCleanApi v1");
+        options.DocumentTitle = "MyCleanApi Swagger UI";
+    });
+
     app.MapScalarApiReference(options =>
     {
         options.WithTitle("MyCleanApi API Documentation")
