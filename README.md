@@ -71,8 +71,15 @@ dotnet new cleanapi -n FinTechService --db sqlserver --api-style minimal
 
 Parameter yang tersedia:
 - `-n, --name <NAME>` : Nama solution, namespace, dan project baru (menggantikan `MyCleanApi` secara otomatis).
-- `--db <postgres|sqlserver>` : Pilihan database provider.
+- `-D, --db <postgres|sqlserver>` : Pilihan database provider. Mengatur `DatabaseProvider`, connection string, dan service Docker Compose pada proyek hasil generate.
 - `--api-style <controllers|minimal>` : Pilihan gaya endpoint API.
+
+Contoh SQL Server dengan short flag:
+```bash
+dotnet new cleanapi -n ECommerce -D sqlserver
+```
+
+Setelah generate, sesuaikan connection string dan password database untuk lingkungan Anda. Perubahan template tidak diterapkan otomatis ke proyek yang sudah dibuat.
 
 ### 3. Uninstall Template
 Jika ingin menghapus instalasi template dari mesin Anda:
@@ -89,7 +96,7 @@ Pastikan Docker Desktop aktif, lalu jalankan:
 ```bash
 docker compose up -d
 ```
-*Secara default service PostgreSQL di port `5432` akan dinyalakan.*
+*Pada proyek hasil generate, service mengikuti pilihan `--db`: PostgreSQL di port `5432` atau SQL Server di port `1433`. Saat menjalankan source repository ini langsung, gunakan `docker compose -f docker-compose.sqlserver.yml up -d` untuk SQL Server dan sesuaikan konfigurasi database.*
 
 ### 2. Jalankan Web API
 ```bash
@@ -111,6 +118,11 @@ Swagger UI dan Scalar menggunakan dokumen OpenAPI yang sama. Jika memakai profil
 Proyek ini telah dilengkapi dengan Unit Tests dan Integration Tests:
 ```bash
 dotnet test
+```
+
+Khusus source repository template, verifikasi paket dengan generate proyek PostgreSQL dan SQL Server, lalu jalankan build dan pengujiannya:
+```powershell
+pwsh -File scripts/test-template.ps1
 ```
 
 Cakupan pengujian meliputi:

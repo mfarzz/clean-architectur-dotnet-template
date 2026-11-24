@@ -28,6 +28,34 @@
       "defaultValue": "postgres",
       "description": "Select the database provider (postgres | sqlserver)"
     },
+    "DatabaseProvider": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "\"PostgreSQL\"",
+      "parameters": {
+        "cases": [
+          { "condition": "(Database == 'sqlserver')", "value": "\"SqlServer\"" },
+          { "condition": "", "value": "\"PostgreSQL\"" }
+        ]
+      }
+    },
+    "DatabaseConnectionString": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "Host=localhost;Port=5432;Database=MyCleanDb;Username=postgres;Password=postgres;",
+      "parameters": {
+        "cases": [
+          {
+            "condition": "(Database == 'sqlserver')",
+            "value": "Server=localhost,1433;Database=MyCleanDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;"
+          },
+          {
+            "condition": "",
+            "value": "Host=localhost;Port=5432;Database=MyCleanDb;Username=postgres;Password=postgres;"
+          }
+        ]
+      }
+    },
     "ApiStyle": {
       "type": "parameter",
       "datatype": "choice",
@@ -49,8 +77,18 @@
     {
       "modifiers": [
         {
+          "condition": "(Database == 'sqlserver')",
+          "exclude": [ "docker-compose.yml" ],
+          "rename": { "docker-compose.sqlserver.yml": "docker-compose.yml" }
+        },
+        {
+          "condition": "(Database != 'sqlserver')",
+          "exclude": [ "docker-compose.sqlserver.yml" ]
+        },
+        {
           "exclude": [
             "PROJECT_PLAN.md",
+            "scripts/test-template.ps1",
             "packaging/**",
             "dist/**",
             "**/.github/**",

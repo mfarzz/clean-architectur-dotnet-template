@@ -27,6 +27,10 @@ jobs:
       - name: Run Tests
         run: dotnet test MyCleanApi.slnx --no-restore --verbosity normal
 
+      - name: Verify generated template projects
+        shell: pwsh
+        run: ./scripts/test-template.ps1
+
       - name: Determine Package Version
         id: version
         shell: bash

@@ -22,7 +22,7 @@ public static class DependencyInjection
 
         var provider = configuration["DatabaseProvider"] ?? "PostgreSQL";
         var connectionString = configuration.GetConnectionString("DefaultConnection")
-            ?? "Host=localhost;Database=MyCleanDb;Username=postgres;Password=postgres;";
+            ?? "Host=localhost;Port=5432;Database=MyCleanDb;Username=postgres;Password=postgres;";
 
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {

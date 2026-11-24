@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Content Include="..\**\*" 
-             Exclude="..\packaging\**;..\dist\**;..\PROJECT_PLAN.md;..\**\bin\**;..\**\obj\**;..\**\.vs\**;..\**\.vscode\**;..\**\.git\**;..\**\.dotnet\**;..\**\.nuget\**;..\**\*.user;..\**\*.log;..\**\logs\**;..\**\*.nupkg" 
+             Exclude="..\packaging\**;..\dist\**;..\PROJECT_PLAN.md;..\scripts\test-template.ps1;..\**\bin\**;..\**\obj\**;..\**\.vs\**;..\**\.vscode\**;..\**\.git\**;..\**\.dotnet\**;..\**\.nuget\**;..\**\*.user;..\**\*.log;..\**\logs\**;..\**\*.nupkg"
              PackagePath="content/%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
