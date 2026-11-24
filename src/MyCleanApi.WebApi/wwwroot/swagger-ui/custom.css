@@ -1,0 +1,99 @@
+:root {
+  color-scheme: light dark;
+  --api-bg: #f4f7fb;
+  --api-panel: #fff;
+  --api-text: #1b2940;
+  --api-muted: #53647d;
+  --api-border: #d8e0ed;
+  --api-input: #fff;
+  --api-code: #edf2f8;
+  --api-accent: #2563eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-swagger-theme="light"]) {
+    color-scheme: dark;
+    --api-bg: #0b1220;
+    --api-panel: #121d30;
+    --api-text: #e4ebf5;
+    --api-muted: #a3b3cb;
+    --api-border: #30415c;
+    --api-input: #0d1728;
+    --api-code: #0a1322;
+    --api-accent: #8bb4ff;
+  }
+}
+:root[data-swagger-theme="dark"] {
+  color-scheme: dark;
+  --api-bg: #0b1220;
+  --api-panel: #121d30;
+  --api-text: #e4ebf5;
+  --api-muted: #a3b3cb;
+  --api-border: #30415c;
+  --api-input: #0d1728;
+  --api-code: #0a1322;
+  --api-accent: #8bb4ff;
+}
+:root[data-swagger-theme="light"] { color-scheme: light; }
+body { margin: 0; background: var(--api-bg); color: var(--api-text); }
+.api-header { padding: 24px max(24px, calc((100% - 1400px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: var(--api-panel); border-bottom: 1px solid var(--api-border); font: 14px/1.6 system-ui, sans-serif; }
+.api-header strong { display: block; font-size: 21px; letter-spacing: -.5px; }
+.api-header span { display: block; color: var(--api-muted); }
+.api-header label { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.api-header select { padding: 8px 12px; border: 1px solid var(--api-border); border-radius: 8px; background: var(--api-input); color: var(--api-text); font: inherit; }
+.swagger-ui { color: var(--api-text); }
+.swagger-ui .topbar { display: none; }
+.swagger-ui .wrapper { max-width: 1448px; padding: 0 24px; }
+.swagger-ui .info { margin: 36px 0 24px; }
+.swagger-ui .info .title { font-size: 30px; letter-spacing: -.8px; }
+.swagger-ui .info .title, .swagger-ui .info p, .swagger-ui .info li, .swagger-ui .info h1, .swagger-ui .info h2, .swagger-ui .info h3,
+.swagger-ui .opblock-tag, .swagger-ui .opblock-tag small, .swagger-ui .opblock .opblock-summary-description,
+.swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated,
+.swagger-ui .opblock-description-wrapper p, .swagger-ui .opblock-external-docs-wrapper p,
+.swagger-ui .opblock-title_normal p, .swagger-ui .opblock .opblock-section-header h4,
+.swagger-ui .parameter__name, .swagger-ui .parameter__type, .swagger-ui .parameter__in,
+.swagger-ui .response-col_status, .swagger-ui .response-col_links, .swagger-ui .tab li,
+.swagger-ui table thead tr td, .swagger-ui table thead tr th, .swagger-ui .responses-inner h4,
+.swagger-ui .responses-inner h5, .swagger-ui label, .swagger-ui .btn,
+.swagger-ui .model-title, .swagger-ui .model, .swagger-ui .model-toggle,
+.swagger-ui .dialog-ux .modal-ux, .swagger-ui .dialog-ux .modal-ux-header h3,
+.swagger-ui .dialog-ux .modal-ux-content h4, .swagger-ui .dialog-ux .modal-ux-content p,
+.swagger-ui .dialog-ux .modal-ux-content .markdown p, .swagger-ui .loading-container .loading::after {
+  color: var(--api-text);
+}
+.swagger-ui a, .swagger-ui .info a, .swagger-ui .prop-type { color: var(--api-accent); }
+.swagger-ui .scheme-container, .swagger-ui .opblock .opblock-section-header,
+.swagger-ui section.models, .swagger-ui section.models .model-container,
+.swagger-ui .dialog-ux .modal-ux { background: var(--api-panel); box-shadow: none; }
+.swagger-ui .scheme-container { border-block: 1px solid var(--api-border); padding: 20px 0; }
+.swagger-ui .opblock { border-radius: 10px; box-shadow: none; margin-bottom: 14px; }
+.swagger-ui .opblock-tag, .swagger-ui section.models, .swagger-ui section.models h4,
+.swagger-ui .dialog-ux .modal-ux-header, .swagger-ui .auth-container,
+.swagger-ui table thead tr td, .swagger-ui table thead tr th { border-color: var(--api-border); }
+.swagger-ui section.models h4, .swagger-ui section.models h4 span { color: var(--api-text); }
+.swagger-ui input[type=text], .swagger-ui input[type=password], .swagger-ui input[type=search],
+.swagger-ui input[type=email], .swagger-ui input[type=file], .swagger-ui textarea, .swagger-ui select {
+  background: var(--api-input); color: var(--api-text); border-color: var(--api-border); border-radius: 6px;
+}
+.swagger-ui textarea::placeholder, .swagger-ui input::placeholder { color: var(--api-muted); }
+.swagger-ui .model-box, .swagger-ui .highlight-code, .swagger-ui .microlight,
+.swagger-ui .markdown code, .swagger-ui .renderedMarkdown code { background: var(--api-code); color: var(--api-text); }
+.swagger-ui .btn.authorize { color: #23a677; border-color: #23a677; }
+.swagger-ui .authorization__btn svg, .swagger-ui .expand-operation svg,
+.swagger-ui .expand-methods svg, .swagger-ui .opblock-control-arrow svg,
+.swagger-ui .model-toggle::after, .swagger-ui section.models h4 svg,
+.swagger-ui .dialog-ux .modal-ux-header .close-modal svg { fill: var(--api-text); }
+.swagger-ui .dialog-ux .backdrop-ux { background: rgb(0 0 0 / 65%); }
+.swagger-ui .json-schema-2020-12 { padding: 16px 20px; color: var(--api-text); border-bottom: 1px solid var(--api-border); }
+.swagger-ui .json-schema-2020-12-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.swagger-ui .json-schema-2020-12-accordion { display: inline-flex; align-items: center; padding: 0; background: transparent; border: 0; color: var(--api-text); cursor: pointer; font: 600 14px/1.6 system-ui, sans-serif; }
+.swagger-ui .json-schema-2020-12-accordion svg { fill: var(--api-text); }
+.swagger-ui .json-schema-2020-12-expand-deep-button { padding: 4px 8px; border: 1px solid var(--api-border); border-radius: 4px; background: var(--api-input); color: var(--api-muted); cursor: pointer; }
+.swagger-ui .json-schema-2020-12__title, .swagger-ui .json-schema-2020-12-property .json-schema-2020-12-keyword__name { color: var(--api-text); }
+.swagger-ui .json-schema-2020-12__attribute { color: var(--api-accent); font: 12px/1.6 ui-monospace, monospace; }
+.swagger-ui .btn:focus-visible, .swagger-ui input:focus-visible, .swagger-ui select:focus-visible,
+.api-header select:focus-visible { outline: 2px solid var(--api-accent); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .api-header { align-items: flex-start; flex-direction: column; padding: 20px; gap: 12px; }
+  .swagger-ui .wrapper { padding: 0 16px; }
+  .swagger-ui .info .title { font-size: 25px; }
+}

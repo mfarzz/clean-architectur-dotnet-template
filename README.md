@@ -111,6 +111,10 @@ Buka browser dan akses dokumentasi API (aktif hanya pada environment `Developmen
 
 Swagger UI dan Scalar menggunakan dokumen OpenAPI yang sama. Jika memakai profil `https`, gunakan `https://localhost:7255`.
 
+Swagger UI menyediakan tema **System / Light / Dark**. Secara default tema mengikuti preferensi browser/OS dan berubah otomatis saat preferensi sistem berubah. Pilihan tema manual disimpan di browser.
+
+Klik **Authorize**, lalu masukkan access token tanpa awalan `Bearer`. Swagger akan mengirim header `Authorization: Bearer <token>` saat mencoba endpoint. Token tidak disimpan permanen oleh Swagger. Endpoint contoh tetap publik; fitur ini hanya konfigurasi dokumentasi, bukan implementasi login atau validasi JWT. Untuk mengamankan endpoint, konfigurasi autentikasi JWT dan middleware-nya terlebih dahulu, lalu gunakan `[Authorize]` atau `.RequireAuthorization()`.
+
 ---
 
 ## 🧪 Menjalankan Pengujian (Testing)

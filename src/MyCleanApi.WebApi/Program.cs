@@ -19,7 +19,11 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 
 // 3. WebApi Services
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer<ApiDocumentationTransformer>();
+    options.AddOperationTransformer<ApiDocumentationTransformer>();
+});
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddHealthChecks();
@@ -31,11 +35,18 @@ app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseStaticFiles();
     app.MapOpenApi();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("../openapi/v1.json", "MyCleanApi v1");
         options.DocumentTitle = "MyCleanApi Swagger UI";
+        options.HeadContent = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
+        options.InjectStylesheet("../swagger-ui/custom.css");
+        options.InjectJavascript("../swagger-ui/custom.js");
+        options.DisplayRequestDuration();
+        options.EnableFilter();
+        options.EnableDeepLinking();
     });
 
     app.MapScalarApiReference(options =>
